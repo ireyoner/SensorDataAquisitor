@@ -1,13 +1,15 @@
 package project.data;
 
+import java.math.BigDecimal;
+
 
 public class Datagram {
 
-	private final Long id;
+	private BigDecimal id;
 	private final String data;
 	private boolean dataSend;
 	
-	public Datagram(long id, String data) {
+	public Datagram(BigDecimal id, String data) {
 		this.id = id;
 		this.data = data;
 		this.dataSend = false;
@@ -27,7 +29,19 @@ public class Datagram {
 		this.dataSend = dataSend;
 	}
 
-	public Long getId() {
+	public void setId(BigDecimal id) throws Exception {
+		if (id == null) {
+			this.id = id;
+		} else {
+			throw new Exception("Id is already set [current id: ("
+					+ this.id
+					+ ") new id: ("
+					+ id
+					+ ")]");
+		}
+	}
+
+	public BigDecimal getId() {
 		return id;
 	}
 
